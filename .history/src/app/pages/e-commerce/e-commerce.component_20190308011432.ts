@@ -96,7 +96,6 @@ export class ECommerceComponent {
         this.solarValue = data;
       });
 
-    this.cardService.getCheckDayInfo().subscribe((data) => data);
 
   }
 
