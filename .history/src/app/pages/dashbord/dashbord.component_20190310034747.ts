@@ -110,10 +110,10 @@ export class ECommerceComponent {
       this.dateCard.info = date;
       const totalUserCount = this.cards['totalUserCount'];
       this.totalUserCard.info = totalUserCount;
+      const checkedCount = this.cards['checkedCount'];
+      this.checkedCountCard = checkedCount;
       const checkRatio = this.cards['checkRatio'];
       this.checkRatioCard.info = checkRatio;
-      const checkedCount = this.cards['checkedCount'];
-      this.checkedCountCard.info = checkedCount;
 // tslint:disable-next-line: no-console
         console.log(date, totalUserCount, checkedCount);
       });

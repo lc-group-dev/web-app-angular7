@@ -28,27 +28,27 @@ export class ECommerceComponent {
   private alive = true;
 // ng 指令 carddgroup;
   solarValue: number;
-  dateCard: CardSettings = {
+  lightCard: CardSettings = {
     title: '日期',
-    info: '',
+    info: this.myDate,
     iconClass: 'nb-lightbulb',
     type: 'primary',
   };
-  totalUserCard: CardSettings = {
+  rollerShadesCard: CardSettings = {
     title: '统计人数',
-    info: '',
+    info: this.cards['totalUserCount'],
     iconClass: 'nb-roller-shades',
     type: 'success',
   };
-  checkedCountCard: CardSettings = {
+  wirelessAudioCard: CardSettings = {
     title: '打卡人数',
-    info: '',
+    info: this.cards['checkedCount'],
     iconClass: 'nb-audio',
     type: 'info',
   };
-  checkRatioCard: CardSettings = {
+  coffeeMakerCard: CardSettings = {
     title: '打卡率',
-    info: '',
+    info: this.cards['checkRatio'],
     iconClass: 'nb-coffee-maker',
     type: 'warning',
   };
@@ -56,10 +56,10 @@ export class ECommerceComponent {
   statusCards: [];
 
   commonStatusCardsSet: CardSettings[] = [
-    this.dateCard,
-    this.totalUserCard,
-    this.checkedCountCard,
-    this.checkRatioCard,
+    this.lightCard,
+    this.rollerShadesCard,
+    this.wirelessAudioCard,
+    this.coffeeMakerCard,
   ];
 
   statusCardsByThemes: {
@@ -71,19 +71,19 @@ export class ECommerceComponent {
     cosmic: this.commonStatusCardsSet,
     corporate: [
       {
-        ...this.dateCard,
+        ...this.lightCard,
         type: 'warning',
       },
       {
-        ...this.totalUserCard,
+        ...this.rollerShadesCard,
         type: 'primary',
       },
       {
-        ...this.checkedCountCard,
+        ...this.wirelessAudioCard,
         type: 'danger',
       },
       {
-        ...this.checkRatioCard,
+        ...this.coffeeMakerCard,
         type: 'secondary',
       },
     ],
@@ -106,16 +106,10 @@ export class ECommerceComponent {
 
       this.cardService.getCheckDayInfo(this.myDate).subscribe((res) => {
       this.cards = res;
-      const date = this.cards['date'];
-      this.dateCard.info = date;
-      const totalUserCount = this.cards['totalUserCount'];
-      this.totalUserCard.info = totalUserCount;
-      const checkRatio = this.cards['checkRatio'];
-      this.checkRatioCard.info = checkRatio;
-      const checkedCount = this.cards['checkedCount'];
-      this.checkedCountCard.info = checkedCount;
 // tslint:disable-next-line: no-console
-        console.log(date, totalUserCount, checkedCount);
+        console.log(this.cards['checkRatio'],
+        this.cards['totalUserCount'],
+        this.cards['date']);
       });
 
   }

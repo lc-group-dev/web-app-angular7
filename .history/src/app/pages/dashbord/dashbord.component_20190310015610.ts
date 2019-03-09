@@ -4,7 +4,6 @@ import { takeWhile } from 'rxjs/operators' ;
 import { SolarData } from '../../@core/data/solar';
 import { CardService } from './card.service';
 import { formatDate } from '@angular/common';
-import { Summary } from './card.service';
 
 
 
@@ -15,6 +14,12 @@ interface CardSettings {
   info: string | number;
 }
 
+interface Card {
+  date: string;
+  checkedCount: number;
+  totalUserCount: number;
+  checkRatio: string;
+}
 
 @Component({
   selector: 'ngx-dashbord',
@@ -23,30 +28,30 @@ interface CardSettings {
 export class ECommerceComponent {
 
   myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
-  cards: Summary[] = [];
-
+  cards: Card[] = [];
+  totalUserCount = 100;
   private alive = true;
 // ng 指令 carddgroup;
   solarValue: number;
-  dateCard: CardSettings = {
+  lightCard: CardSettings = {
     title: '日期',
-    info: '',
+    info: this.myDate,
     iconClass: 'nb-lightbulb',
     type: 'primary',
   };
-  totalUserCard: CardSettings = {
+  rollerShadesCard: CardSettings = {
     title: '统计人数',
-    info: '',
+    info: this.totalUserCount,
     iconClass: 'nb-roller-shades',
     type: 'success',
   };
-  checkedCountCard: CardSettings = {
+  wirelessAudioCard: CardSettings = {
     title: '打卡人数',
     info: '',
     iconClass: 'nb-audio',
     type: 'info',
   };
-  checkRatioCard: CardSettings = {
+  coffeeMakerCard: CardSettings = {
     title: '打卡率',
     info: '',
     iconClass: 'nb-coffee-maker',
@@ -56,10 +61,10 @@ export class ECommerceComponent {
   statusCards: [];
 
   commonStatusCardsSet: CardSettings[] = [
-    this.dateCard,
-    this.totalUserCard,
-    this.checkedCountCard,
-    this.checkRatioCard,
+    this.lightCard,
+    this.rollerShadesCard,
+    this.wirelessAudioCard,
+    this.coffeeMakerCard,
   ];
 
   statusCardsByThemes: {
@@ -71,19 +76,19 @@ export class ECommerceComponent {
     cosmic: this.commonStatusCardsSet,
     corporate: [
       {
-        ...this.dateCard,
+        ...this.lightCard,
         type: 'warning',
       },
       {
-        ...this.totalUserCard,
+        ...this.rollerShadesCard,
         type: 'primary',
       },
       {
-        ...this.checkedCountCard,
+        ...this.wirelessAudioCard,
         type: 'danger',
       },
       {
-        ...this.checkRatioCard,
+        ...this.coffeeMakerCard,
         type: 'secondary',
       },
     ],
@@ -103,21 +108,7 @@ export class ECommerceComponent {
       .subscribe((data) => {
         this.solarValue = data;
       });
-
-      this.cardService.getCheckDayInfo(this.myDate).subscribe((res) => {
-      this.cards = res;
-      const date = this.cards['date'];
-      this.dateCard.info = date;
-      const totalUserCount = this.cards['totalUserCount'];
-      this.totalUserCard.info = totalUserCount;
-      const checkRatio = this.cards['checkRatio'];
-      this.checkRatioCard.info = checkRatio;
-      const checkedCount = this.cards['checkedCount'];
-      this.checkedCountCard.info = checkedCount;
-// tslint:disable-next-line: no-console
-        console.log(date, totalUserCount, checkedCount);
-      });
-
+      this.cardService.getCheckDayInfo(this.myDate).subscribe((cards) => this.cards = cards);
   }
 
 

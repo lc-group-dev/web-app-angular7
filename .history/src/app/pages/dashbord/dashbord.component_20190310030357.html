@@ -7,6 +7,9 @@
       <i [ngClass]="statusCard.iconClass"></i>
     </ngx-card-group>
   </div>
+  <ul *ngFor="let item of cards">
+      <li>{{item.date}}</li>
+    </ul>
 </div>
 
 

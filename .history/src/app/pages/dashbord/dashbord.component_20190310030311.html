@@ -6,6 +6,9 @@
                      [info]= "statusCard.info">
       <i [ngClass]="statusCard.iconClass"></i>
     </ngx-card-group>
+    <ul *ngFor="let item of cards">
+        <li>{{item.date}}</li>
+      </ul>
   </div>
 </div>
 

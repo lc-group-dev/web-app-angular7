@@ -42,13 +42,13 @@ export class ECommerceComponent {
   };
   checkedCountCard: CardSettings = {
     title: '打卡人数',
-    info: '',
+    info: this.cards['checkedCount'],
     iconClass: 'nb-audio',
     type: 'info',
   };
-  checkRatioCard: CardSettings = {
+  coffeeMakerCard: CardSettings = {
     title: '打卡率',
-    info: '',
+    info: this.cards['checkRatio'],
     iconClass: 'nb-coffee-maker',
     type: 'warning',
   };
@@ -59,7 +59,7 @@ export class ECommerceComponent {
     this.dateCard,
     this.totalUserCard,
     this.checkedCountCard,
-    this.checkRatioCard,
+    this.coffeeMakerCard,
   ];
 
   statusCardsByThemes: {
@@ -83,7 +83,7 @@ export class ECommerceComponent {
         type: 'danger',
       },
       {
-        ...this.checkRatioCard,
+        ...this.coffeeMakerCard,
         type: 'secondary',
       },
     ],
@@ -110,12 +110,11 @@ export class ECommerceComponent {
       this.dateCard.info = date;
       const totalUserCount = this.cards['totalUserCount'];
       this.totalUserCard.info = totalUserCount;
-      const checkRatio = this.cards['checkRatio'];
-      this.checkRatioCard.info = checkRatio;
       const checkedCount = this.cards['checkedCount'];
-      this.checkedCountCard.info = checkedCount;
+      this.checkedCountCard = checkedCount;
+
 // tslint:disable-next-line: no-console
-        console.log(date, totalUserCount, checkedCount);
+        console.log(date, totalUserCount);
       });
 
   }
