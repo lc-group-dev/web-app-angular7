@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
 
 const getCheckDayInfoSum_API = '/api/checkDayInfo/summary/';
 
@@ -10,6 +8,10 @@ interface Summary {
   checkedCount: number;
   totalUserCount: number;
   checkRatio: string;
+}
+
+interface Date {
+  date: string;
 }
 
 interface Info {
@@ -31,8 +33,8 @@ export class CardService {
 
   constructor(private http: HttpClient) { }
 
-  getCheckDayInfo(date: string): Observable<Summary[]> {
-    const params = new HttpParams().append('date', date);
-    return this.http.get<Summary[]>(getCheckDayInfoSum_API , {params});
+  getCheckDayInfo(params: Date) {
+    const query = new HttpParams().append('date', `${params.date}`);
+    return this.http.get(getCheckDayInfoSum_API, {params: query});
   }
 }

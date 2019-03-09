@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
 
 const getCheckDayInfoSum_API = '/api/checkDayInfo/summary/';
 
@@ -31,8 +29,8 @@ export class CardService {
 
   constructor(private http: HttpClient) { }
 
-  getCheckDayInfo(date: string): Observable<Summary[]> {
+  getCheckDayInfo(date: string) {
     const params = new HttpParams().append('date', date);
-    return this.http.get<Summary[]>(getCheckDayInfoSum_API , {params});
+    return this.http.get(getCheckDayInfoSum_API , {params});
   }
 }

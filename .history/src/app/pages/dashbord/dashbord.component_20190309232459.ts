@@ -29,7 +29,7 @@ export class ECommerceComponent {
 
   myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   cards: Card[] = [];
-  totalUserCount = this.cards;
+  totalUserCount: '';
   private alive = true;
 // ng 指令 carddgroup;
   solarValue: number;
@@ -41,7 +41,7 @@ export class ECommerceComponent {
   };
   rollerShadesCard: CardSettings = {
     title: '统计人数',
-    info: this.totalUserCount.toString(),
+    info: this.totalUserCount,
     iconClass: 'nb-roller-shades',
     type: 'success',
   };

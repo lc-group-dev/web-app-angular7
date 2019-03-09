@@ -29,7 +29,7 @@ export class ECommerceComponent {
 
   myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   cards: Card[] = [];
-  totalUserCount = this.cards;
+
   private alive = true;
 // ng 指令 carddgroup;
   solarValue: number;
@@ -41,7 +41,7 @@ export class ECommerceComponent {
   };
   rollerShadesCard: CardSettings = {
     title: '统计人数',
-    info: this.totalUserCount.toString(),
+    info: this.cards.toString(),
     iconClass: 'nb-roller-shades',
     type: 'success',
   };
@@ -58,7 +58,7 @@ export class ECommerceComponent {
     type: 'warning',
   };
 
-  statusCards: [];
+  statusCards: string;
 
   commonStatusCardsSet: CardSettings[] = [
     this.lightCard,

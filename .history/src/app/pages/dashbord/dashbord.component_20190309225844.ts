@@ -11,7 +11,7 @@ interface CardSettings {
   title: string;
   iconClass: string;
   type: string;
-  info: string | number;
+  info: string;
 }
 
 interface Card {
@@ -29,7 +29,7 @@ export class ECommerceComponent {
 
   myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   cards: Card[] = [];
-  totalUserCount = this.cards;
+
   private alive = true;
 // ng 指令 carddgroup;
   solarValue: number;
@@ -41,24 +41,24 @@ export class ECommerceComponent {
   };
   rollerShadesCard: CardSettings = {
     title: '统计人数',
-    info: this.totalUserCount.toString(),
+    info: this.myDate,
     iconClass: 'nb-roller-shades',
     type: 'success',
   };
   wirelessAudioCard: CardSettings = {
     title: '打卡人数',
-    info: '',
+    info: this.myDate,
     iconClass: 'nb-audio',
     type: 'info',
   };
   coffeeMakerCard: CardSettings = {
     title: '打卡率',
-    info: '',
+    info: this.myDate,
     iconClass: 'nb-coffee-maker',
     type: 'warning',
   };
 
-  statusCards: [];
+  statusCards: string;
 
   commonStatusCardsSet: CardSettings[] = [
     this.lightCard,
