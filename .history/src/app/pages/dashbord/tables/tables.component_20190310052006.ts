@@ -5,5 +5,6 @@ import { Component, Input } from '@angular/core';
   template: `<router-outlet></router-outlet>`,
 })
 export class TablesComponent {
+  @Input() myDate;
 
 }

@@ -1,9 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../../@core/data/smart-table';
-import { Day, CardService } from '../../card.service';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -15,9 +13,6 @@ import { formatDate } from '@angular/common';
   `],
 })
 export class SmartTableComponent {
-
-  myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
-  tables: Day[] = [];
 
   settings = {
     columns: {
@@ -50,16 +45,9 @@ export class SmartTableComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData,
-              private infoService: CardService) {
+  constructor(private service: SmartTableData) {
     const data = this.service.getData();
     this.source.load(data);
-
-// tslint:disable-next-line: no-console
-    console.log(this.myDate);
-    this.infoService.getCheckDayInfoDay(this.myDate).subscribe((res) => {
-      this.tables = res;
-      });
   }
 
 }

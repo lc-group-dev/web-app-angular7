@@ -10,7 +10,7 @@ import { CardGroupComponent } from './card-group/card-group.component';
   imports: [
     ThemeModule,
     RouterModule,
-    Ng2SmartTableModule,
+
   ],
   declarations: [
     ECommerceComponent,

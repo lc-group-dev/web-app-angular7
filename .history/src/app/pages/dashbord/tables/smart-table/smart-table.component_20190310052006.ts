@@ -3,7 +3,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../../@core/data/smart-table';
 import { Day, CardService } from '../../card.service';
-import { formatDate } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -15,8 +15,7 @@ import { formatDate } from '@angular/common';
   `],
 })
 export class SmartTableComponent {
-
-  myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+  private myDate: string;
   tables: Day[] = [];
 
   settings = {
@@ -51,7 +50,8 @@ export class SmartTableComponent {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private service: SmartTableData,
-              private infoService: CardService) {
+              private infoService: CardService,
+              private routeinfo: ActivatedRoute) {
     const data = this.service.getData();
     this.source.load(data);
 
@@ -60,6 +60,11 @@ export class SmartTableComponent {
     this.infoService.getCheckDayInfoDay(this.myDate).subscribe((res) => {
       this.tables = res;
       });
+  }
+
+// tslint:disable-next-line: use-life-cycle-interface
+  ngOnInit(): void {
+   this.myDate = this.routeinfo.data['myDate'];
   }
 
 }

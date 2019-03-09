@@ -15,7 +15,6 @@ import { CardGroupComponent } from './card-group/card-group.component';
   declarations: [
     ECommerceComponent,
     TablesComponent,
-    SmartTableComponent,
     CardGroupComponent,
   ],
   providers: [],

@@ -3,7 +3,6 @@ import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../../@core/data/smart-table';
 import { Day, CardService } from '../../card.service';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -15,8 +14,7 @@ import { formatDate } from '@angular/common';
   `],
 })
 export class SmartTableComponent {
-
-  myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+  @Input() myDate;
   tables: Day[] = [];
 
   settings = {

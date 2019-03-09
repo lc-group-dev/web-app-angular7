@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { CardService, Summary } from './card.service';
@@ -29,7 +29,7 @@ export class ECommerceComponent {
   dateCard: CardSettings = {
     title: '日期',
     info: '',
-    iconClass: 'nb-compose',
+    iconClass: 'nb-lightbulb',
     type: 'primary',
   };
   totalUserCard: CardSettings = {
@@ -47,7 +47,7 @@ export class ECommerceComponent {
   checkRatioCard: CardSettings = {
     title: '打卡率',
     info: '',
-    iconClass: 'nb-checkmark-circle',
+    iconClass: 'nb-coffee-maker',
     type: 'warning',
   };
 

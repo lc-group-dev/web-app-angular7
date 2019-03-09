@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
-import { CardService, Summary } from './card.service';
+import { SolarData } from '../../@core/data/solar';
+import { CardService } from './card.service';
 import { formatDate } from '@angular/common';
+import { Summary, Day} from './card.service';
 
 
 
@@ -22,6 +24,7 @@ export class ECommerceComponent {
 
   myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   cards: Summary[] = [];
+  tables: Day[] = [];
 
   private alive = true;
 // ng 指令 carddgroup;
@@ -29,7 +32,7 @@ export class ECommerceComponent {
   dateCard: CardSettings = {
     title: '日期',
     info: '',
-    iconClass: 'nb-compose',
+    iconClass: 'nb-lightbulb',
     type: 'primary',
   };
   totalUserCard: CardSettings = {
@@ -47,7 +50,7 @@ export class ECommerceComponent {
   checkRatioCard: CardSettings = {
     title: '打卡率',
     info: '',
-    iconClass: 'nb-checkmark-circle',
+    iconClass: 'nb-coffee-maker',
     type: 'warning',
   };
 
@@ -88,12 +91,19 @@ export class ECommerceComponent {
   };
 
   constructor(private themeService: NbThemeService,
+              private solarService: SolarData,
               private infoService: CardService) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
         this.statusCards = this.statusCardsByThemes[theme.name];
     });
+
+    this.solarService.getSolarData()
+      .pipe(takeWhile(() => this.alive))
+      .subscribe((data) => {
+        this.solarValue = data;
+      });
 
       this.infoService.getCheckDayInfoSum(this.myDate).subscribe((res) => {
       this.cards = res;
@@ -105,6 +115,11 @@ export class ECommerceComponent {
       this.checkRatioCard.info = checkRatio;
       const checkedCount = this.cards['checkedCount'];
       this.checkedCountCard.info = checkedCount;
+// tslint:disable-next-line: no-console
+        console.log(date, totalUserCount, checkedCount);
+      });
+      this.infoService.getCheckDayInfoDay(this.myDate).subscribe((res) => {
+      this.tables = res;
       });
 
   }
