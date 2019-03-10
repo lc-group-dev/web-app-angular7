@@ -97,7 +97,7 @@ export class ECommerceComponent {
 
       this.infoService.getCheckDayInfoSum(this.myDate).subscribe((res) => {
       this.cards = res;
-      this.dateCard.info = this.cards['date'];
+       this.dateCard.info = this.cards['date'];
       this.totalUserCard.info = this.cards['totalUserCount'];
       this.checkRatioCard.info = this.cards['checkRatio'];
       this.checkedCountCard.info = this.cards['checkedCount'];

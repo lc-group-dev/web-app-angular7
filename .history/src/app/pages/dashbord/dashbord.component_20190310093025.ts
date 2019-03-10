@@ -97,10 +97,16 @@ export class ECommerceComponent {
 
       this.infoService.getCheckDayInfoSum(this.myDate).subscribe((res) => {
       this.cards = res;
-      this.dateCard.info = this.cards['date'];
-      this.totalUserCard.info = this.cards['totalUserCount'];
-      this.checkRatioCard.info = this.cards['checkRatio'];
-      this.checkedCountCard.info = this.cards['checkedCount'];
+// tslint:disable-next-line: no-console
+         console.log(this.cards.map);
+      // const date = this.cards['date'];
+      // this.dateCard.info = date;
+      // const totalUserCount = this.cards['totalUserCount'];
+      // this.totalUserCard.info = totalUserCount;
+      // const checkRatio = this.cards['checkRatio'];
+      // this.checkRatioCard.info = checkRatio;
+      // const checkedCount = this.cards['checkedCount'];
+      // this.checkedCountCard.info = checkedCount;
       });
 
   }
