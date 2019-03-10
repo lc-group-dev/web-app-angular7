@@ -2,7 +2,6 @@
   "/api/*": {
     "target": "http://lc.hellogod.cn:8080/",
     "secure": false,
-    "logLevel":"debug",
-    "changeOrigin": true
+    "logLevel":"debug"
   }
 }

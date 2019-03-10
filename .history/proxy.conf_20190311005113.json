@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "https://lc.hellogod.cn/",
+    "secure": false,
+    "logLevel":"debug"
+  }
+}
