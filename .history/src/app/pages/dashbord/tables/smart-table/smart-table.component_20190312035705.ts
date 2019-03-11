@@ -50,6 +50,9 @@ export class SmartTableComponent {
       gmt_modified: {
         title: '数据更新时间',
         type: 'string',
+        valuePrepareFunction(date){
+          return date.transfom('yyyy-MM-dd');
+        }
       },
     },
   };

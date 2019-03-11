@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Day, CardService } from '../../card.service';
-import { formatDate, DatePipe } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
@@ -20,12 +20,9 @@ export class SmartTableComponent {
   
   settings = {
     columns: {
-      index: {
+      info_id: {
         title: '序号',
-        type: 'string',
-        valuePrepareFunction(value,row,cell){
-          return cell.row.index+1;
-        }
+        type: 'number',
       },
       username: {
         title: '用户名',
@@ -41,11 +38,7 @@ export class SmartTableComponent {
       },
       isChecked: {
         title: '今日查卡',
-        type: 'string',
-        valuePrepareFunction(isChecked){
-          return isChecked== 1?'已打卡':'缺卡'
-        }
-
+        type: 'number',
       },
       gmt_modified: {
         title: '数据更新时间',
@@ -64,6 +57,7 @@ export class SmartTableComponent {
     this.infoService.getCheckDayInfoDay(this.myDate).subscribe((res) => {
       this.tables = res;
       this.source.load(this.tables)
+      console.log(this.source)
       });
   }
 

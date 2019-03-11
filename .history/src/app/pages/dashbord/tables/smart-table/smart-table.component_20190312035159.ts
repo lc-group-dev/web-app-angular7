@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Day, CardService } from '../../card.service';
-import { formatDate, DatePipe } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
@@ -50,6 +50,9 @@ export class SmartTableComponent {
       gmt_modified: {
         title: '数据更新时间',
         type: 'string',
+        valuePrepareFunction(date){
+          return date.formatDate('yyyy-MM-dd', 'en')
+        }
       },
     },
   };
