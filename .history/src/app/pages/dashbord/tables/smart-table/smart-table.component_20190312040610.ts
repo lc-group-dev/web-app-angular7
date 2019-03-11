@@ -22,7 +22,7 @@ export class SmartTableComponent {
       index: {
         title: '序号',
         type: 'string',
-        valuePrepareFunction(value: any, row: any, cell: { row: { index: number; }; }) {
+        valuePrepareFunction(value: any, row: any, cell: { row: { index: number; }; }){
           return cell.row.index + 1;
         },
       },
@@ -41,8 +41,8 @@ export class SmartTableComponent {
       isChecked: {
         title: '今日查卡',
         type: 'string',
-        valuePrepareFunction(isChecked) {
-          return isChecked === 1 ? '已打卡' : '缺卡';
+        valuePrepareFunction(isChecked){
+          return isChecked === 1 ? '已打卡': '缺卡'
         },
 
       },
@@ -62,7 +62,7 @@ export class SmartTableComponent {
     console.log(this.myDate);
     this.infoService.getCheckDayInfoDay(this.myDate).subscribe((res) => {
       this.tables = res;
-      this.source.load(this.tables);
+      this.source.load(this.tables)
       });
   }
 

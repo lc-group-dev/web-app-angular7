@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Day, CardService } from '../../card.service';
-import { formatDate } from '@angular/common';
+import { formatDate, DatePipe } from '@angular/common';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
@@ -14,16 +14,16 @@ import { LocalDataSource } from 'ng2-smart-table';
 })
 export class SmartTableComponent {
 
-    //  myDate = '2019-03-09';
-  myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
-  tables: Day[] = [];
+     myDate = '2019-03-09';
+  // myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+  tables: Day[] = [];  
   settings = {
     columns: {
       index: {
         title: '序号',
         type: 'string',
-        valuePrepareFunction(value: any, row: any, cell: { row: { index: number; }; }) {
-          return cell.row.index + 1;
+        valuePrepareFunction(value,row,cell){
+          return cell.row.index+1;
         },
       },
       username: {
@@ -41,8 +41,8 @@ export class SmartTableComponent {
       isChecked: {
         title: '今日查卡',
         type: 'string',
-        valuePrepareFunction(isChecked) {
-          return isChecked === 1 ? '已打卡' : '缺卡';
+        valuePrepareFunction(isChecked){
+          return isChecked== 1?'已打卡': '缺卡'
         },
 
       },
@@ -62,7 +62,7 @@ export class SmartTableComponent {
     console.log(this.myDate);
     this.infoService.getCheckDayInfoDay(this.myDate).subscribe((res) => {
       this.tables = res;
-      this.source.load(this.tables);
+      this.source.load(this.tables)
       });
   }
 

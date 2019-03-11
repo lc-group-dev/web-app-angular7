@@ -22,7 +22,7 @@ export class SmartTableComponent {
       index: {
         title: '序号',
         type: 'string',
-        valuePrepareFunction(value: any, row: any, cell: { row: { index: number; }; }) {
+        valuePrepareFunction(value: any, row: any, cell: { row: { index: number; }; }){
           return cell.row.index + 1;
         },
       },
