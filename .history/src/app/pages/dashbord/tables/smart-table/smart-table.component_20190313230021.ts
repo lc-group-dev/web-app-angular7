@@ -54,7 +54,7 @@ export class SmartTableComponent {
         title: '数据更新时间',
         type: 'string',
         valuePrepareFunction(gmt_modified) {
-          return formatDate(new Date(gmt_modified), 'medium', 'en');
+          return formatDate(new Date(this.tables.gmt_modified), 'medium', 'en'));
         },
       },
     },

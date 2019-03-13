@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { Day, CardService } from '../../card.service';
-import { formatDate, getLocaleDateFormat } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { LocalDataSource } from 'ng2-smart-table';
-import { TableService } from '../table.service';
-import * as moment from 'moment';
-import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -20,7 +17,6 @@ export class SmartTableComponent {
      myDate = '2019-03-09';
   // myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   tables: Day[] = [];
-  abc = [];
   settings = {
     columns: {
       index: {
@@ -53,9 +49,6 @@ export class SmartTableComponent {
       gmt_modified: {
         title: '数据更新时间',
         type: 'string',
-        valuePrepareFunction(gmt_modified) {
-          return formatDate(new Date(gmt_modified), 'medium', 'en');
-        },
       },
     },
   };
@@ -65,12 +58,14 @@ export class SmartTableComponent {
 
   constructor(private infoService: CardService) {
 
+
     this.infoService.getCheckDayInfoDay(this.myDate).subscribe((res) => {
       this.tables = res;
       this.source.load(this.tables);
-      console.log(this.tables.map(table => formatDate(new Date(table.gmt_modified), 'medium', 'en')));
+      // tslint:disable-next-line: no-console
+    console.log(this.tables);
       });
-
   }
+
 
 }

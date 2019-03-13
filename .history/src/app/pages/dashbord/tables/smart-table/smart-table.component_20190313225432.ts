@@ -20,7 +20,6 @@ export class SmartTableComponent {
      myDate = '2019-03-09';
   // myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   tables: Day[] = [];
-  abc = [];
   settings = {
     columns: {
       index: {
@@ -53,8 +52,8 @@ export class SmartTableComponent {
       gmt_modified: {
         title: '数据更新时间',
         type: 'string',
-        valuePrepareFunction(gmt_modified) {
-          return formatDate(new Date(gmt_modified), 'medium', 'en');
+        valuePrepareFunction(tables) {
+          return tables.map(table => formatDate(new Date(table.gmt_modified), 'medium', 'en'));
         },
       },
     },

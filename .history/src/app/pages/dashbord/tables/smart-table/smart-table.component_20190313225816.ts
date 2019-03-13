@@ -53,8 +53,8 @@ export class SmartTableComponent {
       gmt_modified: {
         title: '数据更新时间',
         type: 'string',
-        valuePrepareFunction(gmt_modified) {
-          return formatDate(new Date(gmt_modified), 'medium', 'en');
+        valuePrepareFunction() {
+          return this.tables.map(table => formatDate(new Date(table.gmt_modified), 'medium', 'en'));
         },
       },
     },
@@ -68,7 +68,7 @@ export class SmartTableComponent {
     this.infoService.getCheckDayInfoDay(this.myDate).subscribe((res) => {
       this.tables = res;
       this.source.load(this.tables);
-      console.log(this.tables.map(table => formatDate(new Date(table.gmt_modified), 'medium', 'en')));
+      console.log(this.abc = this.tables.map(table => formatDate(new Date(table.gmt_modified), 'medium', 'en')));
       });
 
   }
