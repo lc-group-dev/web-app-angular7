@@ -1,11 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { NbMenuService, NbSidebarService, NbDialogService } from '@nebular/theme';
+import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import { UserData } from '../../../@core/data/users';
 import { AnalyticsService } from '../../../@core/utils';
 import { LayoutService } from '../../../@core/utils';
-
-import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
 
 @Component({
   selector: 'ngx-header',
@@ -24,8 +22,7 @@ export class HeaderComponent implements OnInit {
               private menuService: NbMenuService,
               private userService: UserData,
               private analyticsService: AnalyticsService,
-              private layoutService: LayoutService,
-              private dialogService: NbDialogService) {
+              private layoutService: LayoutService) {
   }
 
   ngOnInit() {
@@ -47,8 +44,6 @@ export class HeaderComponent implements OnInit {
   startSearch() {
     this.analyticsService.trackEvent('startSearch');
   }
-  addUserModal() {
-    this.dialogService.open(DialogNamePromptComponent)
-      .onClose.subscribe();
+  addUser() {
   }
 }

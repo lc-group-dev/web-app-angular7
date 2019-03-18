@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {  DialogNamePromptComponent } from './components/header/dialog-name-prompt/dialog-name-prompt.component';
+import {  DialogNamePromptComponent } from './components/header/dialog-name-prompt/dialog-name-prompt';
 
 import {
   NbActionsModule,

@@ -17,6 +17,7 @@ export class SmartTableComponent {
      myDate = '2019-03-09';
   // myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   tables: Day[] = [];
+  abc = [];
   settings = {
     columns: {
       index: {
@@ -26,9 +27,13 @@ export class SmartTableComponent {
           return cell.row.index + 1;
         },
       },
-      username: {
+      avatar: {
         title: '用户名',
         type: 'string',
+        valuePrepareFunction: (avatar) => {
+          return this.infoService.getCheckDayInfoDay
+          (`<img src="${avatar}" alt="avator" height="50" width="50">`);
+        },
       },
       solvedQuestion: {
         title: '刷题数',
@@ -52,10 +57,6 @@ export class SmartTableComponent {
         valuePrepareFunction(gmt_modified) {
           return formatDate(new Date(gmt_modified), 'medium', 'en');
         },
-      },
-      like: {
-        title: '赞',
-        type: 'string',
       },
     },
   };

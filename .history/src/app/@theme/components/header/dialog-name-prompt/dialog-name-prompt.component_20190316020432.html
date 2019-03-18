@@ -1,0 +1,10 @@
+<nb-card>
+    <nb-card-header>请输入leetcode链接地址</nb-card-header>
+    <nb-card-body>
+      <input #name nbInput placeholder="address">
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton status="danget" (click)="cancel()">取消</button>
+      <button nbButton status="success" (click)="submit(name.value)">提交</button>
+    </nb-card-footer>
+  </nb-card>

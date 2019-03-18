@@ -47,6 +47,8 @@ export class HeaderComponent implements OnInit {
   startSearch() {
     this.analyticsService.trackEvent('startSearch');
   }
+  addUser() {
+  }
   addUserModal() {
     this.dialogService.open(DialogNamePromptComponent)
       .onClose.subscribe();

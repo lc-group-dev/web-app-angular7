@@ -17,6 +17,7 @@ export class SmartTableComponent {
      myDate = '2019-03-09';
   // myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   tables: Day[] = [];
+  abc = [];
   settings = {
     columns: {
       index: {
@@ -53,10 +54,6 @@ export class SmartTableComponent {
           return formatDate(new Date(gmt_modified), 'medium', 'en');
         },
       },
-      like: {
-        title: '赞',
-        type: 'string',
-      },
     },
   };
 
@@ -69,7 +66,7 @@ export class SmartTableComponent {
       this.tables = res;
       this.source.load(this.tables);
 // tslint:disable-next-line: no-console
-      console.log(this.tables.map(table => (table)));
+      console.log(this.tables.map(table => formatDate(new Date(table.gmt_modified), 'medium', 'en')));
       });
 
   }

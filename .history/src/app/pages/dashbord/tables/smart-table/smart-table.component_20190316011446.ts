@@ -17,6 +17,7 @@ export class SmartTableComponent {
      myDate = '2019-03-09';
   // myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   tables: Day[] = [];
+  abc = [];
   settings = {
     columns: {
       index: {
@@ -52,10 +53,6 @@ export class SmartTableComponent {
         valuePrepareFunction(gmt_modified) {
           return formatDate(new Date(gmt_modified), 'medium', 'en');
         },
-      },
-      like: {
-        title: '赞',
-        type: 'string',
       },
     },
   };

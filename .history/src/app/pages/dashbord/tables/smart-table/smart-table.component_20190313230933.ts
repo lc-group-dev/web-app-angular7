@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Day, CardService } from '../../card.service';
 import { formatDate } from '@angular/common';
 import { LocalDataSource } from 'ng2-smart-table';
+import { CurrencyIndex } from '@angular/common/src/i18n/locale_data';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -17,6 +18,7 @@ export class SmartTableComponent {
      myDate = '2019-03-09';
   // myDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   tables: Day[] = [];
+  abc = [];
   settings = {
     columns: {
       index: {
@@ -52,10 +54,6 @@ export class SmartTableComponent {
         valuePrepareFunction(gmt_modified) {
           return formatDate(new Date(gmt_modified), 'medium', 'en');
         },
-      },
-      like: {
-        title: '赞',
-        type: 'string',
       },
     },
   };

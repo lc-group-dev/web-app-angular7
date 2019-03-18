@@ -239,6 +239,9 @@
     button {
       padding: 0.8rem;
     }
+    a {
+      padding: 0.8rem;
+    }
   }
 
   @include media-breakpoint-down(is) {

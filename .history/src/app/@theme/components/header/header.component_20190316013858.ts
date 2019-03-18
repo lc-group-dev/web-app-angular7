@@ -5,7 +5,7 @@ import { UserData } from '../../../@core/data/users';
 import { AnalyticsService } from '../../../@core/utils';
 import { LayoutService } from '../../../@core/utils';
 
-import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt.component';
+import { DialogNamePromptComponent } from './dialog-name-prompt/dialog-name-prompt';
 
 @Component({
   selector: 'ngx-header',
@@ -46,6 +46,8 @@ export class HeaderComponent implements OnInit {
 
   startSearch() {
     this.analyticsService.trackEvent('startSearch');
+  }
+  addUser() {
   }
   addUserModal() {
     this.dialogService.open(DialogNamePromptComponent)

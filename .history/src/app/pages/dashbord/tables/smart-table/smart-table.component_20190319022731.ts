@@ -53,10 +53,6 @@ export class SmartTableComponent {
           return formatDate(new Date(gmt_modified), 'medium', 'en');
         },
       },
-      like: {
-        title: '赞',
-        type: 'string',
-      },
     },
   };
 

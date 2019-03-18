@@ -2,7 +2,6 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {  DialogNamePromptComponent } from './components/header/dialog-name-prompt/dialog-name-prompt.component';
 
 import {
   NbActionsModule,
@@ -70,7 +69,6 @@ import {
 import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
-import { from } from 'rxjs';
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -117,7 +115,6 @@ const COMPONENTS = [
   ThemeSwitcherListComponent,
   HeaderComponent,
   FooterComponent,
-  DialogNamePromptComponent,
   SearchInputComponent,
   ThemeSettingsComponent,
   TinyMCEComponent,
@@ -130,7 +127,6 @@ const COMPONENTS = [
 
 const ENTRY_COMPONENTS = [
   ThemeSwitcherListComponent,
-  DialogNamePromptComponent,
 ];
 
 const PIPES = [

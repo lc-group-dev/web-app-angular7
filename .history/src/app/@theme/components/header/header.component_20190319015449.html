@@ -2,32 +2,29 @@
      [class.left]="position === 'normal'"
      [class.right]="position === 'inverse'">
   <div class="logo-containter">
+    <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
     <div class="logo" (click)="goToHome()">一时打卡</div>
   </div>
   <ngx-theme-switcher></ngx-theme-switcher>
 
 <div class="nav-item">
-  <a class="nav-link" routerLink="/pages/dashboard"  routerLinkActive="active">每日榜单</a>
+  <a class="nav-link" routerLink="home">每日榜单</a>
 </div>
-<div class="nav-item">
+<div class="navigation">
    <a class="nav-link" routerLink="about">总榜单</a>
 </div>
-<div class="nav-item">   
+<div class="navigation">   
 <a class="nav-link" routerLink="courses">小组数据</a>
 </div>
-<div class="nav-item">   
+<div class="navigation">   
   <a class="nav-link" routerLink="courses">我的</a>
   </div>
-  <div class="nav-item">   
+  <div class="navigation">   
     <a class="nav-link" routerLink="courses">小程序</a>
     </div>
-    <div class="nav-item">   
-      <a href="https://github.com/lc-group-dev" class="nav-link">本项目现已开源，欢迎 star: leetcodegroup.</a>
-      </div>
-    
 
 
-  <!-- <button nbButton (click)="addUserModal()">添加用户</button> -->
+  <button nbButton (click)="addUserModal()">添加用户</button>
 </div>
 
 <div class="header-container">
